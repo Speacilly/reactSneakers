@@ -13,7 +13,7 @@ function Card ({pName,pPrice,pImg})
     function AddingFolow()
     {
       setFavorite(!favorite)
-      !added? dispatch({type: "addFavoriteElem",pName: pName,pPrice: pPrice,pImg: pImg}):dispatch({type: "delFavoriteElem",pName: pName})
+      !favorite? dispatch({type: "addFavoriteElem",pName: pName,pPrice: pPrice,pImg: pImg}):dispatch({type: "delFavoriteElem",pName: pName})
     }
     return (
 

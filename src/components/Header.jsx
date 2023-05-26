@@ -24,9 +24,11 @@ export default function Header()
             <img width={18} height={18} src="/img/fav.png" />
           </li>
           </Link>
+          <Link to = "/profile">
           <li>
             <img width={18} height={18} src="/img/user.png" />
           </li>
+          </Link>
         </ul>
         </header>
     )

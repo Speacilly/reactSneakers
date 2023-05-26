@@ -13,8 +13,7 @@ export default function Home()
     const Items = useSelector(state => state.items.Items)
    
 
-    const onChangeSearchInput = (event) => {dispatch({type: "onChangeSearchInput", event: event.target.value});
-};
+    const onChangeSearchInput = (event) => {dispatch({type: "onChangeSearchInput", event: event.target.value});};
     React.useEffect(() =>{
         async function Fetch()
         {
@@ -63,8 +62,7 @@ export default function Home()
         </ContentLoader>
         </div>
         )}
-        
-
         </div>
+        
       </div>)
 }

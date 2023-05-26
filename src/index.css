@@ -202,6 +202,7 @@ h5{
 
 .overlay {
   position:fixed;
+  display: flex;
   left: 0;
   top: 0;
   width: 100%;
@@ -343,4 +344,40 @@ h5{
 
 .cartText p{
   margin-bottom: 5px;
+}
+
+.cartEmpty {
+  text-align: center;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+  min-height: 720px;
+}
+
+.cartEmptyp p{
+    width: 280px;
+    line-height: 24px;
+}
+
+.cartEmpty .greenButton{
+    width: 245px;
+    margin-top: 20px;
+}
+
+.cartEmpty .greenButton &:hover img {
+        transform: rotate(180deg) translateX(3px);
+}
+
+.cartEmpty .greenButton img {
+      position: relative;
+      top: 1px;
+      transform: rotate(180deg);
+      margin-right: 15px;
+      transition: transform 0.15s ease-in-out;
+}
+
+.op-6{
+  opacity: 0.6;
 }

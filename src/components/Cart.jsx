@@ -1,36 +1,37 @@
 import { useDispatch, useSelector } from 'react-redux'
+import MiniCard from './miniCardCart.jsx'
+import Info from './info.jsx'
 export default function Cart()
 {
     const dispatch = useDispatch()
     const cartElem = useSelector((state) => state.cartElem.cartElem)
-    function card(pName,pPrice,pImg)
-    {
-      return(
-        <div className="items">
-        <div className="cartItem">
-          <div
-            style={{ backgroundImage: `url(${pImg})` }}
-            className="cartItemImg"></div>
-
-          <div className="cartText">
-            <p>{pName}</p>
-            <b>{pPrice} руб.</b>
-          </div>
-          <img className="removeBtn" onClick={() => dispatch({type: "delCartElem",pName: pName})} src="/img/btn-remove.png" alt="Remove" />
-        </div>
-
-      </div>
-      )
-    }
-    let sum = cartElem.reduce((acc,elem) => acc += elem.pPrice,0)
-    return(<div  className="overlay">
+    const completeOrder = useSelector((state) => state.cartElem.completeOrder)
+    function buy()
+      {
+        dispatch({type:"rCompleteOrder"})
+        console.log(completeOrder)
+        dispatch({type: "addProfileItems",cartElem: cartElem})
+        dispatch({type:"cleanCartElem"})
+        console.log(cartElem)
+      }
+      let sum
+      cartElem.length > 0?  sum = cartElem.reduce((acc,elem) => acc += elem.pPrice,0): sum = 0
+    return(<div  className="overlay" >
+      <div style={{width: "100%",height: "80%"}}  onClick={() => dispatch({type: "showC"})}></div>
+      {cartElem.length > 0 ?
     <div className="drawer">
+      
       <h2>
         Корзина <img className="cu-p button" src="./img/btn-remove.png" alt="Remove" onClick={() => dispatch({type: "showC"})}/>
       </h2>
-      
-      
-      <div className="cartText">{cartElem.map((elem) => card(elem.pName, elem.pPrice, elem.pImg))}</div>
+
+      <div className="cartText">{cartElem.map((elem,index) => 
+      <MiniCard 
+      key = {index}
+      pName = {elem.pName} 
+      pPrice = {elem.pPrice} 
+      pImg = {elem.pImg} />)}
+      </div>
       
 
       <div className="cartTotalBlock">
@@ -51,10 +52,16 @@ export default function Cart()
             <b>{sum + Math.floor(sum * 0.05)} руб. </b>
           </li>
         </ul>
-        <button className="greenButton">
+        <button className="greenButton" onClick={() => buy()}>
           Оформить заказ <img src="/img/arrow.png" alt="Arrow" />
         </button>
-      </div>
-    </div>
+      </div></div>:
+      <Info 
+        name = {completeOrder? 'Заказ оформлен!' : 'Корзина пустая'}
+        commit = {completeOrder?  `Ваш заказ скоро будет передан курьерской доставке`
+        : 'Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.'}
+        img = {completeOrder? 'img/complete-order.jpg' : 'img/empty-cart.jpg'}
+      />
+    }
   </div>)
 }
