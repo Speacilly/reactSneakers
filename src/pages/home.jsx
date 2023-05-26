@@ -60,7 +60,7 @@ export default function Home()
         <rect x="0" y="187" rx="5" ry="5" width="100" height="15" />
         <rect x="1" y="234" rx="5" ry="5" width="80" height="25" />
         <rect x="124" y="230" rx="10" ry="10" width="32" height="32" />
-      </ContentLoader>
+        </ContentLoader>
         </div>
         )}
         
