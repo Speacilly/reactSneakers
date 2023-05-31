@@ -13,7 +13,7 @@ export default function MiniCard({pName,pPrice,pImg})
             <p>{pName}</p>
             <b>{pPrice} руб.</b>
           </div>
-          <img className="removeBtn" onClick={() => dispatch({type: "delCartElem",pName: pName})} src="/img/btn-remove.png" alt="Remove" />
+          <img className="removeBtn cu-p button" onClick={() => dispatch({type: "delCartElem",pName: pName})} src="/img/btn-remove.png" alt="Remove" />
         </div>
 
       </div>

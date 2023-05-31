@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux"
+import { useDispatch,useSelector } from "react-redux"
 
 export default function Info({name,commit,img})
 {
+  const temaDW = useSelector((state) => state.temaDW.temaDW)
     const dispatch = useDispatch()
     return(
-        <div className="drawer">
+        <div className={temaDW?"drawer":"drawer darkDrawer"}>
         <div className="cartEmpty d-flex align-center justify-center flex-column flex">
           <img className="mb-20" width="120px" src={img} alt="Empty" />
           <h2>{name}</h2>

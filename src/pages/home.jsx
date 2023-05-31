@@ -7,13 +7,17 @@ import axios from 'axios';
 export default function Home()
 {
     const dispatch = useDispatch()
-
+    const temaDW = useSelector((state) => state.temaDW.temaDW)
     const  skel  = useSelector((state) => state.isLoading.skel);
     const searchValue = useSelector(state => state.searchValue.searchValue)
     const Items = useSelector(state => state.items.Items)
    
 
-    const onChangeSearchInput = (event) => {dispatch({type: "onChangeSearchInput", event: event.target.value});};
+    const onChangeSearchInput = (event) => {
+      dispatch({type: "onChangeSearchInput", event: event.target.value})
+      
+    
+    };
     React.useEffect(() =>{
         async function Fetch()
         {
@@ -22,17 +26,18 @@ export default function Home()
           dispatch({type: "rSkel"})
         }
         Fetch()
+        
     },[])
    
     return(
     <div className="content">
             <h1>Все кроссовки</h1>        
           <div className="search-block">
-                <img src="/img/search.png" width={18} height={18} alt="Search" />
-                { <input onChange={onChangeSearchInput} placeholder="Поиск..." /> }
+                <img src="/img/search.png" width={18} height={18} alt="Search" className='button'/>
+                { <input className='button' onChange={onChangeSearchInput} placeholder="Поиск..." /> }
             </div>
 
-    
+           
         <div className="ds-f">
         
          {!skel ?

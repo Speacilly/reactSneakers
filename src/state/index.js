@@ -6,6 +6,7 @@ import { cartElem } from './cartElem.js'
 import { showCart } from './showCart.js'
 import { favoriteItems } from './favoriteItems.js'
 import { profileItems } from './profileItems.js'
+import { temaDW } from './temaDW.js'
 
 const rootReducer = combineReducers({
     isLoading: loadingReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     showCart: showCart,
     favoriteItems: favoriteItems,
     profileItems: profileItems,
+    temaDW: temaDW,
 })
 
 

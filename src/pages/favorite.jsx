@@ -9,10 +9,10 @@ export default function Favorite()
     return(
         
         <div className="content">
-            <h1>Все кроссовки</h1>        
+            <h1>Моё избранное</h1>        
           <div className="search-block">
                 <img src="/img/search.png" width={18} height={18} alt="Search" />
-                { <input onChange={onChangeSearchInput} placeholder="Поиск..." /> }
+                { <input className='button' onChange={onChangeSearchInput} placeholder="Поиск..." /> }
             </div>
         
         <div className="ds-f">

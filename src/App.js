@@ -8,12 +8,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import {Route,Routes} from 'react-router-dom';
 
 
+
 export default function App() {  
   const showCart = useSelector((state) => state.showCart.showCart)
-
-
 return (
-<div className="wrapper">
+<div className= "wrapper">
       <Header />
       {showCart&& <Cart/>}
 <Routes>

@@ -1,9 +1,11 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 function Card ({pName,pPrice,pImg}) 
 {
   const [added,setAdded] = React.useState(false)
   const [favorite,setFavorite] = React.useState(false)
+  
+  
   const dispatch = useDispatch()
     function AddingCart()
     {
@@ -30,9 +32,9 @@ function Card ({pName,pPrice,pImg})
                 <span>Цена:</span>
                 <b>{pPrice}.</b>
             </div>
-            <button className="button">
-              <img width={32} height={32} src={added?"/img/btn-checked.svg":"/img/plus.png"}  alt="Plus" onClick={() => {AddingCart()}} />
-            </button>
+
+              <img  className = "button"width={32} height={32} src={added?"/img/btn-checked.svg":"/img/plus.png"}  alt="Plus" onClick={() => {AddingCart()}} />
+
         </div>
         </>
       
