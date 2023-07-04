@@ -18,7 +18,7 @@ export default function Cart()
     return(<div  className="overlay" >
       <div style={{width: "100%",height: "80%"}}  onClick={() => dispatch({type: "showC"})}></div>
       {cartElem.length > 0 ?
-    <div className={temaDW?"drawer":"drawer darkDrawer"}>
+    <div className="drawer">
       
       <h2>
         Корзина <img className="cu-p button" src="./img/btn-remove.png" alt="Remove" onClick={() => dispatch({type: "showC"})}/>

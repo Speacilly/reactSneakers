@@ -1,5 +1,6 @@
 import {useDispatch, useSelector } from "react-redux"
 import Card from '../components/Card.jsx'
+import Reg from '../components/Reg_form.jsx'
 export default function Favorite()
 {
     const dispatch = useDispatch()
@@ -14,7 +15,7 @@ export default function Favorite()
                 <img src="/img/search.png" width={18} height={18} alt="Search" />
                 { <input className='button' onChange={onChangeSearchInput} placeholder="Поиск..." /> }
             </div>
-        
+        <Reg/>
         <div className="ds-f">
             {Items.length && Items.filter((item) => item.pName.toLowerCase().includes(searchValue.toLowerCase()))
         .map((elem, index) => 
