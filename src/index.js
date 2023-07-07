@@ -5,16 +5,20 @@ import App from './App';
 import {BrowserRouter as Router} from 'react-router-dom'
 import { Provider } from 'react-redux';
 import {store} from './state/index.js'
+import { ApolloProvider } from '@apollo/client';
+import { client } from './apolloClient.js';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+    <ApolloProvider client={client}>
     <Router>
       <Provider store ={store}>
       <App />
       </Provider>
-    </Router>,
-  root
+    </Router>
+  </ApolloProvider>,
+    root
 );
 
 // If you want to start measuring performance in your app, pass a function
