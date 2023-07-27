@@ -1,4 +1,4 @@
-import {combineReducers, createStore} from 'redux'
+import {applyMiddleware,combineReducers, createStore} from 'redux'
 import { loadingReducer } from './loadingReducer.js'
 import { ItemsR } from './itemsR.js'
 import { searchValue } from './searchValue.js'
@@ -7,6 +7,7 @@ import { showCart } from './showCart.js'
 import { favoriteItems } from './favoriteItems.js'
 import { profileItems } from './profileItems.js'
 import { temaDW } from './temaDW.js'
+import thunk from 'redux-thunk'
 
 const rootReducer = combineReducers({
     isLoading: loadingReducer,
@@ -20,4 +21,4 @@ const rootReducer = combineReducers({
 })
 
 
-export const store = createStore(rootReducer)
+export const store = createStore(rootReducer, applyMiddleware(thunk))

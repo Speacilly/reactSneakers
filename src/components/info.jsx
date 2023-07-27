@@ -1,7 +1,8 @@
 import { useDispatch,useSelector } from "react-redux"
 
-export default function Info({name,commit,img})
+export default function Info(obj)
 {
+  const {name,commit,img} = obj
   const temaDW = useSelector((state) => state.temaDW.temaDW)
     const dispatch = useDispatch()
     return(

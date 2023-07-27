@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import {BrowserRouter as Router} from 'react-router-dom'
 import { Provider } from 'react-redux';
-import {store} from './state/index.js'
+import {store} from './store/index.js'
 import { ApolloProvider } from '@apollo/client';
 import { client } from './apolloClient.js';
 

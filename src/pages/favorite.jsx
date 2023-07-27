@@ -5,7 +5,7 @@ export default function Favorite()
     const dispatch = useDispatch()
     const onChangeSearchInput = (event) => {dispatch({type: "onChangeSearchInput", event: event.target.value})}
     const searchValue = useSelector(state => state.searchValue.searchValue)
-    const Items = useSelector(state => state.favoriteItems.favoriteItems)
+    const favoriteItems = useSelector(state => state.favoriteItems.favoriteItems)
     return(
         
         <div className="content">
@@ -16,13 +16,14 @@ export default function Favorite()
             </div>
         
         <div className="ds-f">
-            {Items.length && Items.filter((item) => item.pName.toLowerCase().includes(searchValue.toLowerCase()))
+            {favoriteItems.length && favoriteItems.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
         .map((elem, index) => 
         <Card 
         key={index} 
-        pName = {elem.pName} 
-        pPrice = {elem.pPrice} 
-        pImg = {elem.pImg} 
+        title = {elem.title} 
+        price = {elem.price} 
+        url = {elem.url} 
+        id = {elem.id}
         />)}</div>
       </div>
     )

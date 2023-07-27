@@ -17,13 +17,14 @@ export default function Favorite()
             </div>
         <Reg/>
         <div className="ds-f">
-            {Items.length && Items.filter((item) => item.pName.toLowerCase().includes(searchValue.toLowerCase()))
+            {Items.length && Items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
         .map((elem, index) => 
         <Card 
         key={index} 
-        pName = {elem.pName} 
-        pPrice = {elem.pPrice} 
-        pImg = {elem.pImg} 
+        title = {elem.title} 
+        price = {elem.price} 
+        url = {elem.url} 
+        id = {elem.id}
         />)}</div>
       </div>
     )

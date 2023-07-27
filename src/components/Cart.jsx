@@ -6,7 +6,6 @@ export default function Cart()
     const dispatch = useDispatch()
     const cartElem = useSelector((state) => state.cartElem.cartElem)
     const completeOrder = useSelector((state) => state.cartElem.completeOrder)
-    const temaDW = useSelector((state) => state.temaDW.temaDW)
     function buy()
       {
         dispatch({type:"rCompleteOrder"})
@@ -14,7 +13,7 @@ export default function Cart()
         dispatch({type:"cleanCartElem"})
       }
       let sum
-      cartElem.length > 0?  sum = cartElem.reduce((acc,elem) => acc += elem.pPrice,0): sum = 0
+      cartElem.length > 0?  sum = cartElem.reduce((acc,elem) => acc += elem.price,0): sum = 0
     return(<div  className="overlay" >
       <div style={{width: "100%",height: "80%"}}  onClick={() => dispatch({type: "showC"})}></div>
       {cartElem.length > 0 ?
@@ -27,9 +26,10 @@ export default function Cart()
       <div className="cartText">{cartElem.map((elem,index) => 
       <MiniCard 
       key = {index}
-      pName = {elem.pName} 
-      pPrice = {elem.pPrice} 
-      pImg = {elem.pImg} />)}
+      title = {elem.title} 
+      price = {elem.price} 
+      url = {elem.url}
+      id = {elem.id} />)}
       </div>
       
 
