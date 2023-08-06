@@ -9,11 +9,15 @@ function Card (obj)
   const {title,price,url} = obj
   const cartElem = useSelector((state) => state.cartElem.cartElem)
   const favoriteItems = useSelector((state) => state.favoriteItems.favoriteItems)
-  const [added,setAdded] = React.useState(false)
+  const [added,setAdded] = React.useState( false)
   const [favorite,setFavorite] = React.useState(false)
-  
-  
   const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    setAdded(cartElem.find(elem => elem.title ===  title))
+    setFavorite(favoriteItems.find(elem => elem.title === title))
+  },[cartElem,favoriteItems])
+ 
     
   function AddingFolow()
   {

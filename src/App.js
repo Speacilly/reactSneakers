@@ -4,6 +4,7 @@ import {Route,Routes} from 'react-router-dom';
 import { useQuery } from '@apollo/client'
 import { PRODUCTS } from './graphql/querys.js'
 
+
 import Cart from './components/Cart.jsx'
 import Header from './components/Header.jsx'
 import Favorite from './pages/favorite.jsx'
@@ -13,6 +14,7 @@ import Card from './components/Card.jsx'
 import { getItems } from './asyncActions/getItems.js'
 import { getCart } from './asyncActions/getCart.js';
 import { getFav } from './asyncActions/getFav.js';
+
 
 export default function App() {  
   const showCart = useSelector((state) => state.showCart.showCart)
@@ -39,7 +41,6 @@ return (
       <Header />
       {showCart&& <Cart/>}
       <div className="ds-f">
-        
         {statedata ?
        statedata.products.map((elem, index) => 
        <Card 
