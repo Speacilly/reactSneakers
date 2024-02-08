@@ -16,16 +16,7 @@ export default function Favorite()
                 { <input className='button' onChange={onChangeSearchInput} placeholder="Поиск..." /> }
             </div>
         <Reg/>
-        <div className="ds-f">
-            {Items.length && Items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-        .map((elem, index) => 
-        <Card 
-        key={index} 
-        title = {elem.title} 
-        price = {elem.price} 
-        url = {elem.url} 
-        id = {elem.id}
-        />)}</div>
+       
       </div>
     )
 }

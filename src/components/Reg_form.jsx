@@ -1,74 +1,65 @@
 import React,{ useState } from "react"
 import { Create_One_Product } from "../graphql/mutation.js"
 import { useMutation } from "@apollo/client"
+import "./style/reg.css"
+import { postUser } from "../asyncActions/postUser.js"
+import { getUsers } from "../asyncActions/getUser.js"
+import { useSelector,useDispatch } from "react-redux"
+
 export default function Reg()
 {
-    const [content,setContent] = useState({})
-
-     
-    const changeInputRegister = event => {
-        event.persist()
-        setContent ((value) => ({
-            ...value,
-            [event.target.name]: event.target.value
-        }))
-    }
-     
-     const [addNewSneakers] = useMutation(Create_One_Product)
-
-     
-    const submitChackin = event => {
+    const [content,setContent] = useState(false)
+    
+    const dispatch = useDispatch()
+    
+    const usersElem = useSelector((state) => state.usersElem.Items)
+   
+    const handleSubmit = (event) => {
+        const formData = new FormData(event.currentTarget);
         event.preventDefault();
-        addNewSneakers({
-            variables:{
-                data: content
-            },
-            onCompleted: (res) => {
-                console.log(res)
-            }
+        const formDataObj = {};
+        formData.forEach((value, key) => (formDataObj[key] = value));
+        dispatch(postUser(formDataObj,usersElem))
+    }
+    const handleSubmitLogin = (event) => {
+        const formData = new FormData(event.currentTarget);
+        event.preventDefault();
+        const formDataObj = {};
+        formData.forEach((value, key) => (formDataObj[key] = value));
+        console.log(usersElem)
+        usersElem.forEach((value, key) => {
+           formDataObj.password == value.password && formDataObj.email == value.email && setContent(true)
         })
     }
+
     return (
-        <div className="form">
-            <h2>Register user:</h2>
-            <form onSubmit={submitChackin}>
-                <p>Name: <input 
-                type="name"
-                id="name"
-                name="name"
-                value={content.name}
-                onChange={changeInputRegister}
-                /></p>
-                <p>type <input 
-                type="type"
-                id="type"
-                name="type"
-                value={content.type}
-                onChange={changeInputRegister}
-                /></p>
-                <p>price <input 
-                type="price"
-                id="price"
-                name="price"
-                value={content.price}
-                onChange={changeInputRegister}
-                /></p>
-                <p>description <input 
-                type="description"
-                id="description"
-                name="description"
-                value={content.description}
-                onChange={changeInputRegister}
-                    /></p>
-                <p>qty<input 
-                type="qty"
-                id="qty"
-                name="qty"
-                value={content.qty}
-                onChange={changeInputRegister}
-                    /></p>
-                <input type="submit"/> 
-            </form>
+        <div>
+        { !content?
+        <div class="main">  	
+		    <input type="checkbox" id="chk" aria-hidden="true" class="input"/>
+
+			<div class="signup">
+				<form onSubmit={handleSubmit}>
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="Name" placeholder="User name" required="" class="input"/>
+					<input type="email" name="email" placeholder="Email" required="" class="input"/>
+					<input type="password" name="password" placeholder="Password" required="" class="input"/>
+					<button>Sign up</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form onSubmit={handleSubmitLogin}>
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="email" name="email" placeholder="Email" required="" class="input"/>
+					<input type="password" name="password" placeholder="Password" required="" class="input"/>
+					<button>Login</button>
+				</form>
+			</div>
+	    </div>: 
+        <div>
+        </div>}
+        
         </div>
-    )
+    )   
 }

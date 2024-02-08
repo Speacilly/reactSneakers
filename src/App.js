@@ -14,14 +14,14 @@ import Card from './components/Card.jsx'
 import { getItems } from './asyncActions/getItems.js'
 import { getCart } from './asyncActions/getCart.js';
 import { getFav } from './asyncActions/getFav.js';
-
+import { getUsers } from './asyncActions/getUser.js';
 
 export default function App() {  
   const showCart = useSelector((state) => state.showCart.showCart)
   const [statedata,setdata] = useState()
   const {data} = useQuery(PRODUCTS)
   const dispatch = useDispatch()
-
+  
   useEffect(() =>{
     setdata(data)
   },[data])
@@ -29,9 +29,11 @@ export default function App() {
   React.useEffect(() =>{
 
        const Fetch = () => {
+        dispatch(getUsers())
         dispatch(getItems())
         dispatch(getCart())
         dispatch(getFav())
+        
        }
         Fetch()
   },[])
@@ -40,16 +42,7 @@ return (
 <div className= "wrapper">
       <Header />
       {showCart&& <Cart/>}
-      <div className="ds-f">
-        {statedata ?
-       statedata.products.map((elem, index) => 
-       <Card 
-       key={index} 
-       title= {elem.name} 
-       price = {elem.price} 
-       url = {elem.id} 
-       />) : <></>}
-       </div>
+     
       <Routes>
       <Route path='/' element = {<Home />} >
       

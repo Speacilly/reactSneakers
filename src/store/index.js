@@ -7,6 +7,7 @@ import { showCart } from './showCart.js'
 import { favoriteItems } from './favoriteItems.js'
 import { profileItems } from './profileItems.js'
 import { temaDW } from './temaDW.js'
+import { usersElem } from './usersElem.js'
 import thunk from 'redux-thunk'
 
 const rootReducer = combineReducers({
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
     favoriteItems: favoriteItems,
     profileItems: profileItems,
     temaDW: temaDW,
+    usersElem: usersElem,
 })
 
 

@@ -4,7 +4,7 @@ const defaultState = {
 }
 
 const  ADD_CART_ELEM = 'addCartElem'
-const  DEL_CART_ELEM = 'delCartElem'
+const  DEL_CART_ELEM = 'delCalrtEem'
 const  R_COMPLETE_ORDER = 'rCompleteOrder'
 export  const cartElem = (state = defaultState,action) =>
 {
@@ -16,7 +16,8 @@ export  const cartElem = (state = defaultState,action) =>
     case DEL_CART_ELEM:
         return {...state,cartElem: state.cartElem.filter((elem) => !elem.title.toLowerCase().includes(action.title.toLowerCase()))}
     case R_COMPLETE_ORDER:
-        return {...state,completeOrder: 1}
+        
+        return {...state,cartElem: [],completeOrder: 1}
     default:
       return state
   }

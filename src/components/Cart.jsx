@@ -11,6 +11,7 @@ export default function Cart()
         dispatch({type:"rCompleteOrder"})
         dispatch({type: "addProfileItems",cartElem: cartElem})
         dispatch({type:"cleanCartElem"})
+        
       }
       let sum
       cartElem.length > 0?  sum = cartElem.reduce((acc,elem) => acc += elem.price,0): sum = 0
